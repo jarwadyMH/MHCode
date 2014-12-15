@@ -1,0 +1,6 @@
+global class PropertyLedgerScheduledActual implements Schedulable {
+   global void execute(SchedulableContext SC) {
+      PropertyLedgerBatchActual plb = new PropertyLedgerBatchActual();
+      Database.executeBatch(plb);
+   }
+}
