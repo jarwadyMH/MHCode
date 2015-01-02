@@ -1,0 +1,2 @@
+      <apex:pageBlockSection title="Object Relationships" columns="3" id="section1">
+        <script>twistSection(document.getElementById("{!$Component.section1}").childNodes[0].childNodes[0]); </script> 
