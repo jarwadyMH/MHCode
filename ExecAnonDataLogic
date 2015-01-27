@@ -1,0 +1,35 @@
+/****************************************************************************************************************************************************
+Author:
+Jeff Arwady
+
+Description:
+This is Execute Anonymous code to update all Trade Accounts in Salesforce.  The code checks to see if the Active checkbox
+value is FALSE and, if so, changes the value to TRUE.
+
+Date:
+1/27/2015
+****************************************************************************************************************************************************/
+
+//Create a List of Accounts to Update Using SOQL, and another List of Accounts to verify
+
+List<Account> trades = [SELECT Id, Name, Active__c FROM Account WHERE Active__c = FALSE AND RecordTypeId = '012d0000000dn9Y' LIMIT 10000]; //Line 15
+List<Account> activeFalse = new List<Account>();
+
+//Iterate over the trades List and instruct each record to check the Active box; Log the trade record information
+
+for(Account a :trades) {
+ 
+    a.Active__c = TRUE;
+    System.debug(a); //This will display the Id, Name, and Active__c fields because that's what was queried on line 15
+}
+
+//Instruct the Database to Commit the Changes and then Check to See How Many Records Remain to be Updated
+//Remove the comment marks on line 29 to exit simulation mode and actually update the database
+
+//update trades;  //Line 29
+activeFalse = [SELECT Id FROM Account WHERE RecordTypeId = '012d0000000dn9Y' AND Active__c = FALSE LIMIT 50000];
+
+//Display a log of the total number of records updated and the total number remaining to update
+
+System.debug('Total Number of Trade Accounts Updated: '+trades.size());
+System.debug('Total Number of Remaining Trade Accounts to Update: '+activeFalse.size());
