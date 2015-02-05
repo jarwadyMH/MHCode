@@ -1,0 +1,34 @@
+{!REQUIRESCRIPT("/soap/ajax/29.0/connection.js")};
+
+var BugHerdConfig = {
+feedback: {
+hide:"true",
+tab_text: "Send feedback",
+option_title_text: "Choose an option",
+option_pin_text: "I have feedback regarding a specific part of this page.",
+option_site_text: "I have feedback regarding this page or site as a whole.",
+pin_instruction_text: "Hover over page elements to highlight them, then click to create an annotation.",
+feedback_entry_placeholder: "write a comment or describe a problem",
+feedback_email_placeholder: "your email address",
+feedback_submit_text: "send feedback",
+confirm_success_text: "Your feedback was sent.",
+confirm_loading_text: "Sending feedback.",
+confirm_close_text: "close",
+confirm_error_text: "Sending feedback was unsuccessful.",
+confirm_retry_text: "Try again",
+confirm_extension_text: "Did you know you can send a screenshot with your bug reports?",
+confirm_extension_link_text: "Find out how.",
+}
+};
+
+(function (d, t) {
+var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+bh.type = 'text/javascript';
+bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=4dusmvmpckwwzvee8roclq';
+s.parentNode.insertBefore(bh, s);
+
+})(document, 'script');
+
+setTimeout(function(){
+_bugHerd.win.bugherd.applicationView.anonymousbar.toggleOptions();
+},2000);
